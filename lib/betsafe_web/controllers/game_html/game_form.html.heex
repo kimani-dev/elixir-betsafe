@@ -1,0 +1,16 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+
+  <.input field={f[:sport_id]} type="select" options={@sports} label="Sport" />
+  <.input field={f[:team_a_id]} type="select" options={@teams} label="Team A" />
+  <.input field={f[:team_b_id]} type="select" options={@teams} label="Team B" />
+  <.input field={f[:odds_team_a]} type="number" label="Odds team a" step="any" />
+  <.input field={f[:odds_team_b]} type="number" label="Odds team b" step="any" />
+  <.input field={f[:odds_draw]} type="number" label="Odds draw" step="any" />
+  <.input field={f[:outcome]} type="text" label="Outcome" />
+  <:actions>
+    <.button>Save Game</.button>
+  </:actions>
+</.simple_form>

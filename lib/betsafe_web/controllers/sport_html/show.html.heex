@@ -1,0 +1,15 @@
+<.header>
+  Sport {@sport.id}
+  <:subtitle>This is a sport record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/sports/#{@sport}/edit"}>
+      <.button>Edit sport</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name">{@sport.name}</:item>
+</.list>
+
+<.back navigate={~p"/sports"}>Back to sports</.back>

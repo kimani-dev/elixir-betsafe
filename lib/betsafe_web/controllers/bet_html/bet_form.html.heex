@@ -1,0 +1,12 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:user_id]} type="select" label="User" options={@users} />
+  <.input field={f[:game_id]} type="select" label="Game" options={@games} />
+  <.input field={f[:prediction]} type="select" label="Prediction" options={@predictions} />
+  <.input field={f[:amount]} type="number" label="Amount" step="any" />
+  <:actions>
+    <.button>Save Bet</.button>
+  </:actions>
+</.simple_form>

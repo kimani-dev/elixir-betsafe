@@ -1,0 +1,8 @@
+<.header>
+  Edit Sport {@sport.id}
+  <:subtitle>Use this form to manage sport records in your database.</:subtitle>
+</.header>
+
+<.sport_form changeset={@changeset} action={~p"/sports/#{@sport}"} />
+
+<.back navigate={~p"/sports"}>Back to sports</.back>

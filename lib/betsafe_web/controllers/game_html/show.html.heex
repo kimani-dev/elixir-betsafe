@@ -1,0 +1,18 @@
+<.header>
+  Game {@game.id}
+  <:subtitle>This is a game record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/games/#{@game}/edit"}>
+      <.button>Edit game</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Odds team a">{@game.odds_team_a}</:item>
+  <:item title="Odds team b">{@game.odds_team_b}</:item>
+  <:item title="Odds draw">{@game.odds_draw}</:item>
+  <:item title="Outcome">{@game.outcome}</:item>
+</.list>
+
+<.back navigate={~p"/games"}>Back to games</.back>

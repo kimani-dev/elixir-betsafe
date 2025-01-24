@@ -1,0 +1,29 @@
+<.header>
+  Listing Games
+  <:actions>
+    <.link href={~p"/games/new"}>
+      <.button>New Game</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="games" rows={@games} row_click={&JS.navigate(~p"/games/#{&1}")}>
+  <:col :let={game} label="Team A">{game.team_a.name}</:col>
+  <:col :let={game} label="Team B">{game.team_b.name}</:col>
+  <:col :let={game} label="Sport">{game.sport.name}</:col>
+  <:col :let={game} label="Odds team a">{game.odds_team_a}</:col>
+  <:col :let={game} label="Odds team b">{game.odds_team_b}</:col>
+  <:col :let={game} label="Odds draw">{game.odds_draw}</:col>
+  <:col :let={game} label="Outcome">{game.outcome}</:col>
+  <:action :let={game}>
+    <div class="sr-only">
+      <.link navigate={~p"/games/#{game}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/games/#{game}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={game}>
+    <.link href={~p"/games/#{game}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
