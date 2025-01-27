@@ -4,6 +4,7 @@ defmodule Betsafe.Bets do
   """
 
   import Ecto.Query, warn: false
+  alias Betsafe.Bets.Prediction
   alias Betsafe.Repo
 
   alias Betsafe.Bets.Bet
@@ -100,5 +101,56 @@ defmodule Betsafe.Bets do
   """
   def change_bet(%Bet{} = bet, attrs \\ %{}) do
     Bet.changeset(bet, attrs)
+  end
+
+  # List all predictions
+  def list_predictions do
+    Repo.all(Prediction)
+    |> Repo.preload([:bet, :game])
+  end
+
+  # Get a prediction by ID
+  def get_prediction!(id) do
+    Prediction
+    |> Repo.get!(id)
+    |> Repo.preload([:bet, :game])
+  end
+
+  # Create a prediction
+  def create_prediction(attrs) do
+    %Prediction{}
+    |> Prediction.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # Update a prediction
+  def update_prediction(%Prediction{} = prediction, attrs) do
+    prediction
+    |> Prediction.changeset(attrs)
+    |> Repo.update()
+  end
+
+  # Delete a prediction
+  def delete_prediction(%Prediction{} = prediction) do
+    Repo.delete(prediction)
+  end
+
+  # Create a bet with predictions
+  def create_bet_with_predictions(bet_attrs, predictions_attrs) do
+    Repo.transaction(fn ->
+      bet = create_bet(bet_attrs)
+
+      Enum.each(predictions_attrs, fn prediction_attrs ->
+        create_prediction(Map.put(prediction_attrs, :bet_id, bet.id))
+      end)
+
+      bet
+    end)
+  end
+
+  # Fetch all bets with predictions
+  def list_bets_with_predictions do
+    Repo.all(Bet)
+    |> Repo.preload([:predictions])
   end
 end

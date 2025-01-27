@@ -1,13 +1,12 @@
 defmodule Betsafe.Bets.Bet do
+  alias Betsafe.Bets.Prediction
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "bets" do
-    field :prediction, :string
     field :amount, :decimal
-
     belongs_to :user, Betsafe.Account.User
-    belongs_to :game, Betsafe.Sports.Game
+    has_many :predictions, Prediction
 
     timestamps(type: :utc_datetime)
   end
@@ -15,7 +14,8 @@ defmodule Betsafe.Bets.Bet do
   @doc false
   def changeset(bet, attrs) do
     bet
-    |> cast(attrs, [:prediction, :amount, :user_id, :game_id])
-    |> validate_required([:prediction, :amount, :user_id, :game_id])
+    |> cast(attrs, [:prediction, :amount, :user_id])
+    |> validate_required([:prediction, :amount, :user_id])
+    |> cast_assoc(:predictions, with: &Prediction.changeset/2)
   end
 end
