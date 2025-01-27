@@ -11,7 +11,7 @@ defmodule BetsafeWeb.UserForgotPasswordLive do
         <:subtitle>We'll send a password reset link to your inbox</:subtitle>
       </.header>
 
-      <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
+      <.simple_form for={@form} id="reset_password_form" phx-submit="send_email" class="p-6 mt-6 bg-white rounded-lg shadow-md">
         <.input field={@form[:email_address]} type="email" placeholder="Email" required />
         <:actions>
           <.button phx-disable-with="Sending..." class="w-full">

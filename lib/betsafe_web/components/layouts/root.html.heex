@@ -39,9 +39,9 @@
               </li>
             <% else %>
               <!-- Non-Logged-in User -->
-              <li><a href="/login" class="hover:text-yellow-400">Login</a></li>
+              <li><a href="/users/log_in" class="hover:text-yellow-400">Login</a></li>
               <li>
-                <a href="/register" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-lg hover:bg-yellow-400">
+                <a href="/users/register" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-lg hover:bg-yellow-400">
                   Sign Up
                 </a>
               </li>
@@ -53,6 +53,7 @@
 
     <div class="flex h-screen bg-blue-900 text-white">
       <!-- Sidebar -->
+      <%= if @current_user do %>
       <aside class="w-64 bg-blue-900 shadow-md flex flex-col">
     
         <!-- Navigation Links -->
@@ -84,6 +85,7 @@
           </button>
         </form>
       </aside>
+      <% end %>
     
       <!-- Page Content -->
       <main class="flex-1 bg-gray-100 text-gray-900 overflow-y-auto">

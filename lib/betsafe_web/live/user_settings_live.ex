@@ -17,6 +17,7 @@ defmodule BetsafeWeb.UserSettingsLive do
           id="email_form"
           phx-submit="update_email"
           phx-change="validate_email"
+          class="p-6 mt-6 bg-white rounded-lg shadow-md"
         >
           <.input field={@email_form[:email_address]} type="email" label="Email" required />
           <.input
@@ -42,6 +43,7 @@ defmodule BetsafeWeb.UserSettingsLive do
           phx-change="validate_password"
           phx-submit="update_password"
           phx-trigger-action={@trigger_submit}
+          class="p-6 mt-6 bg-white rounded-lg shadow-md"
         >
           <input
             name={@password_form[:email_address].name}

@@ -15,7 +15,7 @@ defmodule BetsafeWeb.UserLoginLive do
         </:subtitle>
       </.header>
 
-      <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
+      <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore" class="p-6 mt-6 bg-white rounded-lg shadow-md">
         <.input field={@form[:email_address]} type="email" label="Email" required />
         <.input field={@form[:password]} type="password" label="Password" required />
 

@@ -19,6 +19,7 @@ defmodule BetsafeWeb.UserRegistrationLive do
       </.header>
 
       <.simple_form
+        class="p-6 mt-6 bg-white rounded-lg shadow-md"
         for={@form}
         id="registration_form"
         phx-submit="save"
