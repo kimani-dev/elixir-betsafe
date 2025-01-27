@@ -115,6 +115,7 @@ defmodule Betsafe.Sports do
   """
   def list_games do
     Repo.all(Game)
+    |> Repo.preload([:team_a, :team_b, :sport])
   end
 
   @doc """

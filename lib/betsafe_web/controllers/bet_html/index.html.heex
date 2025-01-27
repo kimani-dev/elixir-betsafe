@@ -9,8 +9,6 @@
 
 <.table id="bets" rows={@bets} row_click={&JS.navigate(~p"/bets/#{&1}")}>
   <:col :let={bet} label="User">{bet.user.first_name} {bet.user.last_name}</:col>
-  <:col :let={bet} label="Game">{bet.game.team_a.name} vs {bet.game.team_b.name}</:col>
-  <:col :let={bet} label="Prediction">{bet.prediction}</:col>
   <:col :let={bet} label="Amount">{bet.amount}</:col>
   <:action :let={bet}>
     <div class="sr-only">

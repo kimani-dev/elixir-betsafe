@@ -1,24 +1,25 @@
 <div class="flex h-screen bg-gray-100">
   
-    <!-- Main Content -->
     <main class="flex-1 overflow-y-auto p-6">
-      <!-- Page Title -->
       <h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
   
       <div class="grid grid-cols-12 gap-6">
-        <!-- Games Section -->
-        <section class="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <section class="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-2 gap-4">
+
           <!-- Game Card -->
+          <%= for game <- @games do %>
           <div
             class="bg-white rounded-lg shadow-md p-4"
             x-data="{ selected: null }"
           >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">
+              <%= game.team_a.name %> vs <%= game.team_b.name %>
+            </h2>
             <div class="flex justify-between text-center text-gray-600 mb-4">
               <div class="flex-1">
                 <button
                   class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
+                  @click="selected = 'Home'"
                 >
                   Home
                 </button>
@@ -34,352 +35,19 @@
               <div class="flex-1">
                 <button
                   class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
+                  @click="selected = 'Away'"
                 >
                   Away
                 </button>
               </div>
             </div>
             <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
+              <span>Odds: <%= game.odds_team_a %></span>
+              <span>Odds: <%= game.odds_draw %></span>
+              <span>Odds: <%= game.odds_team_b %></span>
             </div>
           </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <div
-            class="bg-white rounded-lg shadow-md p-4"
-            x-data="{ selected: null }"
-          >
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">Team A vs Team B</h2>
-            <div class="flex justify-between text-center text-gray-600 mb-4">
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team A'"
-                >
-                  Home
-                </button>
-              </div>
-              <div class="flex-1 mx-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Draw'"
-                >
-                  Draw
-                </button>
-              </div>
-              <div class="flex-1">
-                <button
-                  class="w-full px-2 py-1 bg-blue-100 rounded-md hover:bg-blue-200"
-                  @click="selected = 'Team B'"
-                >
-                  Away
-                </button>
-              </div>
-            </div>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>Odds: 2.5</span>
-              <span>Odds: 3.0</span>
-              <span>Odds: 1.8</span>
-            </div>
-          </div>
-          <!-- Repeat for more games -->
+          <% end %>
         </section>
   
         <!-- Betslip Section -->
@@ -388,12 +56,13 @@
   
           <div class="space-y-4">
             <!-- Game Selection -->
+            <%= for game <- @games do %>
             <div class="flex justify-between text-sm">
-              <span class="font-medium">Team A vs Team B</span>
+              <span class="font-medium"><%= game.team_a.name %> vs <%= game.team_b.name %></span>
               <span>Home</span>
             </div>
             <hr class="border-gray-200">
-            <!-- Add more game selections dynamically -->
+            <% end %>
           </div>
   
           <hr class="border-gray-300 my-4">
@@ -413,7 +82,7 @@
           <!-- Possible Outcome -->
           <div class="mt-4">
             <p class="text-sm font-medium text-gray-800">Possible Outcome:</p>
-            <p class="text-lg font-bold text-blue-600">Ksh <span x-text="(betAmount * totalOdds).toFixed(2)"></span></p>
+            <p class="text-lg font-bold text-blue-600">Ksh 23,456</p>
           </div>
   
           <button

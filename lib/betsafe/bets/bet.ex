@@ -14,8 +14,8 @@ defmodule Betsafe.Bets.Bet do
   @doc false
   def changeset(bet, attrs) do
     bet
-    |> cast(attrs, [:prediction, :amount, :user_id])
-    |> validate_required([:prediction, :amount, :user_id])
-    |> cast_assoc(:predictions, with: &Prediction.changeset/2)
+    |> cast(attrs, [:amount, :user_id])
+    |> put_assoc(:predictions, attrs[:predictions] || [])
+    |> validate_required([:amount, :user_id])
   end
 end
